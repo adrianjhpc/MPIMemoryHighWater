@@ -1,5 +1,5 @@
 #!/bin/bash
-hostname==`hostname`
+hostname=`hostname`
 rm -f memoutput${hostname}.txt
 while :
 do
