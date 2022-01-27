@@ -17,7 +17,7 @@ void mpi_finalize_(int *ierr){
   *ierr = MPI_Finalize();
 }
 
-// Function to intercept MPI_Finalize, kill the inject process, and then call the MPI
+// Function to intercept MPI_Finalize, collect memory information, and then call the MPI
 // library finalize using PMPI_Finalize.
 int MPI_Finalize(){
   int ierr;
@@ -40,7 +40,7 @@ int MPI_Finalize(){
   communicator node_comm, world_comm, root_comm;
   int memory_used, node_max, node_min, node_total, root_indivi_max, root_indivi_min, root_node_av, root_node_min, root_node_max;  
 
-// Get the rank and size of the node communicator this process is involved
+  // Get the rank and size of the node communicator this process is involved
   // in.
   MPI_Comm_size(MPI_COMM_WORLD, &temp_size);
   MPI_Comm_rank(MPI_COMM_WORLD, &temp_rank);
